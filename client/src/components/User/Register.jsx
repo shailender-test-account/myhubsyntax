@@ -268,6 +268,8 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const API_BASE_URL=`/api/v1`
+
     const fields = ["email", "role", "password", "confirm", "terms"];
     const newErrors = {};
     fields.forEach((f) => {
@@ -304,7 +306,7 @@ export default function Register() {
 
     try {
       const { data } = await axios.post(
-        "/api/v1/auth/register",
+        `%{API_BASE_URL}/auth/register`,
         {
           email: form.email.trim(),
           password: form.password,

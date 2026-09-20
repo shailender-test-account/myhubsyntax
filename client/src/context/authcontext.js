@@ -9,8 +9,9 @@ export const AuthProvider = ({ children }) => {
 
   // Check current session on mount
   const fetchMe = async () => {
+    const API_BASE_URL=`/api/v1`
     try {
-      const { data } = await axios.get("/api/v1/auth/me");
+      const { data } = await axios.get(`${API_BASE_URL}/auth/me`);
       setUser(data.user);
     } catch {
       setUser(null);
@@ -35,12 +36,14 @@ export const AuthProvider = ({ children }) => {
 //   };
 
   const logout = async () => {
-    await axios.post("/api/v1/auth/logout");
+    const API_BASE_URL=`/api/v1`
+    await axios.post(`${API_BASE_URL}/auth/logout`);
     setUser(null);
   };
 
   const refreshUser = async () => {
-    const { data } = await axios.get("/api/v1/auth/me");
+    const API_BASE_URL=`/api/v1`
+    const { data } = await axios.get(`${API_BASE_URL}/auth/me`);
     setUser(data.user);
   };
 

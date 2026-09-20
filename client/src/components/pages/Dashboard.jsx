@@ -26,9 +26,10 @@ export const Dashboard = () => {
   }, []);
 
   const openStripeDashboard = async () => {
+     const API_BASE_URL=`/api/v1`
     setLoading(true);
     try {
-      const { data } = await axios.get("/api/v1/stripe/dashboard-link");
+      const { data } = await axios.get(`${API_BASE_URL}/stripe/dashboard-link`);
       window.open(data.url, "_blank");
     } catch (err) {
       toast.error(err.response?.data?.message || "Failed to open dashboard");

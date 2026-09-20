@@ -14,9 +14,10 @@ const ConnectStripe = () => {
 
   // If user returned from Stripe with ?refresh=true, re-verify
   useEffect(() => {
+     const API_BASE_URL=`/api/v1`
     const verify = async () => {
       try {
-        await axios.get("/api/v1/stripe/verify");
+        await axios.get(`${API_BASE_URL}/stripe/verify`);
         await refreshUser();
         toast.success("Stripe account verified!");
         navigate("/dashboard");
@@ -32,9 +33,10 @@ const ConnectStripe = () => {
   }, []);
 
   const handleConnect = async () => {
+     const API_BASE_URL=`/api/v1`
     setLoading(true);
     try {
-      const { data } = await axios.post("/api/v1/stripe/connect");
+      const { data } = await axios.post(`${API_BASE_URL}/stripe/connect`);
       // Redirect user to Stripe-hosted onboarding
       window.location.href = data.url;
     } catch (err) {

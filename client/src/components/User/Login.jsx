@@ -267,6 +267,7 @@ export default function Login() {
   /* ---------- Submit (axios) ---------- */
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const API_BASE_URL = '/api/v1'
 
     const fields = ["email", "password"];
     const newErrors = {};
@@ -303,7 +304,7 @@ export default function Login() {
 
     try {
       const { data } = await axios.post(
-        "/api/v1/auth/login",
+        `${API_BASE_URL}/auth/login`,
         {
           email: form.email.trim(),
           password: form.password,
