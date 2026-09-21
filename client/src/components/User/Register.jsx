@@ -306,7 +306,7 @@ export default function Register() {
 
     try {
       const { data } = await axios.post(
-        `%{API_BASE_URL}/auth/register`,
+        `${API_BASE_URL}/auth/register`,
         {
           email: form.email.trim(),
           password: form.password,
@@ -638,7 +638,7 @@ export default function Register() {
             </button>
 
             <p className="switch-line">
-              Already have an account? <Link to={"/login"}>Sign in</Link>
+              Already have an account? <Link to={"/"}>Sign in</Link>
             </p>
           </form>
         </div>
